@@ -1,10 +1,9 @@
 package com.acme.supermercado.controllers;
 
 import com.acme.supermercado.entities.Categoria;
-import com.acme.supermercado.services.CategoriaService;
+import com.acme.supermercado.services.interfaces.CategoriaInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,7 +14,7 @@ import java.util.List;
 public class CategoriaController {
 
     @Autowired
-    CategoriaService categoriaService;
+    CategoriaInterface categoriaService;
 
     @GetMapping("/{id}")
     public ResponseEntity<Categoria> findById(@PathVariable Long id) {
