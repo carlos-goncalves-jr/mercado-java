@@ -1,8 +1,8 @@
 package com.acme.supermercado.exceptions;
 
-public class DuplicateCategoriaException extends RuntimeException {
+public class DuplicateException extends RuntimeException {
     private String message;
-    public DuplicateCategoriaException(String message) {
+    public DuplicateException(String message) {
         super(message);
         this.message = message;
     }

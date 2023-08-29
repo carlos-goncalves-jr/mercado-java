@@ -1,17 +1,13 @@
 package com.acme.supermercado.services;
 
 import com.acme.supermercado.entities.Categoria;
-import com.acme.supermercado.exceptions.DuplicateCategoriaException;
+import com.acme.supermercado.exceptions.DuplicateException;
 import com.acme.supermercado.exceptions.NomeNotFoundException;
 import com.acme.supermercado.repositories.CategoriaRepository;
-import com.acme.supermercado.exceptions.ExceptionObject;
 import com.acme.supermercado.exceptions.IdNotFoundException;
 import com.acme.supermercado.services.interfaces.CategoriaInterface;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.ResponseStatus;
 
 import java.util.List;
 
@@ -39,7 +35,7 @@ public class CategoriaServiceImpl implements CategoriaInterface {
     @Override
     public Categoria createCategoria(Categoria categoria) {
         if(checkCategoriaExistence(categoria)) {
-            throw new DuplicateCategoriaException("CATEGORIA JA EXISTENTE : " + categoria.getNome());
+            throw new DuplicateException("CATEGORIA JA EXISTENTE : " + categoria.getNome());
         }
         return categoriaRepository.save(categoria);
     }
@@ -48,7 +44,7 @@ public class CategoriaServiceImpl implements CategoriaInterface {
     public Categoria updateCategoria(Long id, Categoria novaCategoria) {
         Categoria categoriaAtual = categoriaRepository.findById(id).orElseThrow(() -> new IdNotFoundException("ID NAO ENCONTRADO : " + id));
         if(checkCategoriaExistence(novaCategoria)) {
-            throw new DuplicateCategoriaException("CATEGORIA JA EXISTENTE : " + novaCategoria.getNome());
+            throw new DuplicateException("CATEGORIA JA EXISTENTE : " + novaCategoria.getNome());
         }
         categoriaAtual.setNome(novaCategoria.getNome());
         return categoriaRepository.save(categoriaAtual);
@@ -56,7 +52,7 @@ public class CategoriaServiceImpl implements CategoriaInterface {
     }
 
     @Override
-    public void deleteCategoria(Long id) {
+    public void deleteCategoriaById(Long id) {
         Categoria categoria = categoriaRepository.findById(id).orElseThrow(() -> new IdNotFoundException("ID NAO ENCONTRADO : " + id));
         categoriaRepository.deleteById(id);
     }

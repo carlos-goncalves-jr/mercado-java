@@ -39,7 +39,6 @@ public class CategoriaController {
 
     @ApiResponses( value = {
             @ApiResponse(responseCode = "200", description = "Retorna a categoria com sucesso"),
-            @ApiResponse(responseCode = "404", description = "Id não encontrado")
     })
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public List<Categoria> findAll() {
@@ -71,7 +70,7 @@ public class CategoriaController {
     })
     @DeleteMapping(value = "/{id}")
     public ResponseEntity<HttpStatus> deleteCategoria(@PathVariable Long id) {
-        categoriaService.deleteCategoria(id);
+        categoriaService.deleteCategoriaById(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 

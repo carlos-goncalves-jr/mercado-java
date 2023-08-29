@@ -29,8 +29,8 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<ExceptionObject>(exceptionResponse, HttpStatus.NOT_FOUND);
     }
 
-    @ExceptionHandler(DuplicateCategoriaException.class)
-    public ResponseEntity<ExceptionObject> handlerDuplicateCategoriaException(DuplicateCategoriaException ex, WebRequest request) {
+    @ExceptionHandler(DuplicateException.class)
+    public ResponseEntity<ExceptionObject> handlerDuplicateException(DuplicateException ex, WebRequest request) {
         ExceptionObject exceptionResponse = new ExceptionObject();
         exceptionResponse.setStatusCode(HttpStatus.CONFLICT.value());
         exceptionResponse.setResponseMessage(ex.getMessage());
