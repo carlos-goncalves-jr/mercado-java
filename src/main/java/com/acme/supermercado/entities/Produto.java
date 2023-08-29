@@ -19,6 +19,7 @@ public class Produto {
     private Long id;
     @NotNull
     private String nome;
+    private Double preco;
     @Enumerated(EnumType.STRING)
     private UnidadeDeMedida unidadeDeMedida;
     @ManyToOne
