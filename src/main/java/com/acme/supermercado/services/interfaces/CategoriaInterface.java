@@ -13,5 +13,5 @@ public interface CategoriaInterface {
     Categoria createCategoria(Categoria categoria);
     Categoria updateCategoria(Long id ,Categoria newCategoria);
 
-    void deleteCategoria(Long id);
+    void deleteCategoriaById(Long id);
 }
