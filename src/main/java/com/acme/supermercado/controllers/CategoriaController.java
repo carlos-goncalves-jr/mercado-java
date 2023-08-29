@@ -1,11 +1,9 @@
 package com.acme.supermercado.controllers;
 
 import com.acme.supermercado.entities.Categoria;
-import com.acme.supermercado.services.CategoriaService;
 import com.acme.supermercado.services.interfaces.CategoriaInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
