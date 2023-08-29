@@ -14,22 +14,27 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(IdNotFoundException.class)
     public ResponseEntity<ExceptionObject> handlerIdNotFoundException(IdNotFoundException ex, WebRequest request) {
         ExceptionObject exceptionResponse = new ExceptionObject();
-
         exceptionResponse.setStatusCode(HttpStatus.NOT_FOUND.value());
         exceptionResponse.setResponseMessage(ex.getMessage());
         exceptionResponse.setTimestamp(new Date());
-
         return new ResponseEntity<ExceptionObject>(exceptionResponse, HttpStatus.NOT_FOUND);
     }
 
     @ExceptionHandler(NomeNotFoundException.class)
     public ResponseEntity<ExceptionObject> handlerNomeNotFoundException(NomeNotFoundException ex, WebRequest request) {
         ExceptionObject exceptionResponse = new ExceptionObject();
-
         exceptionResponse.setStatusCode(HttpStatus.NOT_FOUND.value());
         exceptionResponse.setResponseMessage(ex.getMessage());
         exceptionResponse.setTimestamp(new Date());
-
         return new ResponseEntity<ExceptionObject>(exceptionResponse, HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(DuplicateCategoriaException.class)
+    public ResponseEntity<ExceptionObject> handlerDuplicateCategoriaException(DuplicateCategoriaException ex, WebRequest request) {
+        ExceptionObject exceptionResponse = new ExceptionObject();
+        exceptionResponse.setStatusCode(HttpStatus.CONFLICT.value());
+        exceptionResponse.setResponseMessage(ex.getMessage());
+        exceptionResponse.setTimestamp(new Date());
+        return new ResponseEntity<ExceptionObject>(exceptionResponse, HttpStatus.CONFLICT);
     }
 }
