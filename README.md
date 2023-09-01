@@ -9,16 +9,10 @@ Projeto simulando um sistema de supermercado, contendo os módulos abaixo:
 * Finalização do Pedido
 
 ### Cadastro de Categorias 🎏
-A função de categorias é responsável por registrar os tipos de Produtos que serão comercializados pelo supermercado, como por exemplo:
+A função de categorias é responsável por registrar os tipos de Produtos que serão comercializados pelo supermercado através do seguinte campo:
 
-> Bebidas
+> Nome
 > 
-> Limpeza
-> 
-> Esportes
-> 
-> Eletronicos
->
 
 ### Cadastro de Produtos 🍕
 O cadastro de Produtos utiliza de uma das categorias criadas anteriormente para instanciar um objeto, contendo os seguintes campos:
@@ -54,4 +48,6 @@ A responsabilidade desta parte da aplicação é realizar o calculo do valor tot
   <a href="https://spring.io/" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/springio/springio-icon.svg" alt="spring" width="40" height="40"/> </a> 
   <a href="https://www.docker.com" target="_blank" rel="noreferrer"> <img src="https://www.svgrepo.com/show/349342/docker.svg" alt="docker" width="40" height="40"> </a>
   <a href="https://www.postgresql.org" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/postgresql/postgresql-icon.svg" alt="postgre" width="40" height="40"> </a>
+  <a href="https://swagger.io" target="_blank" rel="noreferrer"> <img src="https://www.svgrepo.com/show/374111/swagger.svg" alt="swagger" width="40" height="40"> </a>
+  <a href="https://ubuntu.com" target="_blank" rel="noreferrer"> <img src="https://www.svgrepo.com/show/452122/ubuntu.svg" alt="ubuntu-server" width="40" height="40"> </a>
 </p>
