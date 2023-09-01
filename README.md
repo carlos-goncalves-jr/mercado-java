@@ -51,4 +51,5 @@ A responsabilidade desta parte da aplicação é realizar o calculo do valor tot
   <a href="https://swagger.io" target="_blank" rel="noreferrer"> <img src="https://www.svgrepo.com/show/374111/swagger.svg" alt="swagger" width="40" height="40"> </a>
   <a href="https://ubuntu.com" target="_blank" rel="noreferrer"> <img src="https://www.svgrepo.com/show/452122/ubuntu.svg" alt="ubuntu-server" width="40" height="40"> </a>
   <a href="https://github.com" target="_blank" rel="noreferrer"> <img src="https://www.svgrepo.com/show/512317/github-142.svg" alt="git-hub" width="40" height="40"> </a>
+  <a href="https://maven.apache.org" target="_blank" rel="noreferrer"> <img src="https://www.svgrepo.com/show/373829/maven.svg" alt="maven" width="40" height="40"> </a>
 </p>
