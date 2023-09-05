@@ -1,8 +1,7 @@
 package com.acme.supermercado.controllers;
 
 import com.acme.supermercado.entities.Carrinho;
-import com.acme.supermercado.entities.dtos.CarrinhoDTO;
-import com.acme.supermercado.entities.dtos.ProdutoDTO;
+import com.acme.supermercado.entities.ProdutoCarrinho;
 import com.acme.supermercado.services.interfaces.CarrinhoInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,18 +16,18 @@ public class CarrinhoController {
     CarrinhoInterface carrinhoService;
 
     @GetMapping("/{id}")
-    public ResponseEntity<CarrinhoDTO> listarCarrinho(@PathVariable Long id) {
+    public ResponseEntity<Carrinho> listarCarrinho(@PathVariable Long id) {
         return ResponseEntity.ok(carrinhoService.listarCarrinho(id));
     }
 
     @PostMapping("/{id}")
-    public ResponseEntity<Carrinho> adicionarProduto(@PathVariable Long id, @RequestBody ProdutoDTO produtoDto) {
-        return new ResponseEntity<Carrinho>(carrinhoService.adicionarProduto(id, produtoDto), HttpStatus.CREATED);
+    public ResponseEntity<Carrinho> adicionarProduto(@PathVariable Long id, @RequestBody ProdutoCarrinho produtoCarrinho) {
+        return new ResponseEntity<Carrinho>(carrinhoService.adicionarProduto(id, produtoCarrinho), HttpStatus.CREATED);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<HttpStatus> removerProduto(@PathVariable Long id, @RequestBody ProdutoDTO produtoDto) {
-        carrinhoService.removerProduto(id, produtoDto);
+    public ResponseEntity<HttpStatus> removerProduto(@PathVariable Long id, @RequestBody ProdutoCarrinho produtoCarrinho) {
+        carrinhoService.removerProduto(id, produtoCarrinho);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 

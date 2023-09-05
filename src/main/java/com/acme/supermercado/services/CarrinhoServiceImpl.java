@@ -1,12 +1,11 @@
 package com.acme.supermercado.services;
 
 import com.acme.supermercado.entities.Carrinho;
-import com.acme.supermercado.entities.Produto;
-import com.acme.supermercado.entities.dtos.CarrinhoDTO;
-import com.acme.supermercado.entities.dtos.ProdutoDTO;
+import com.acme.supermercado.entities.ProdutoCarrinho;
 import com.acme.supermercado.exceptions.IdNotFoundException;
 import com.acme.supermercado.repositories.CarrinhoRepository;
 import com.acme.supermercado.services.interfaces.CarrinhoInterface;
+import com.acme.supermercado.services.interfaces.ProdutoInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,25 +15,27 @@ public class CarrinhoServiceImpl implements CarrinhoInterface {
     @Autowired
     CarrinhoRepository carrinhoRepository;
 
+    @Autowired
+    ProdutoInterface produtoService;
+
     @Override
-    public Carrinho adicionarProduto(Long id, ProdutoDTO produtoDto) {
+    public Carrinho adicionarProduto(Long id, ProdutoCarrinho produtoCarrinho) {
         Carrinho carrinho = findById(id);
-        Produto produto = new Produto(produtoDto);
-        carrinho.getMapDeProdutos().put(produto, produtoDto.getQuantidade());
+        produtoService.findById(produtoCarrinho.getId_produto());
+        carrinho.getListaDeProdutos().add(produtoCarrinho);
         return carrinhoRepository.save(carrinho);
     }
 
     @Override
-    public void removerProduto(Long id, ProdutoDTO produtoDto) {
+    public void removerProduto(Long id, ProdutoCarrinho produtoCarrinho) {
         Carrinho carrinho = findById(id);
-        Produto produto = new Produto(produtoDto);
-        carrinho.getMapDeProdutos().remove(produto);
+        carrinho.getListaDeProdutos().remove(produtoCarrinho);
         carrinhoRepository.save(carrinho);
     }
 
     @Override
-    public CarrinhoDTO listarCarrinho(Long id) {
-        return new CarrinhoDTO(findById(id));
+    public Carrinho listarCarrinho(Long id) {
+        return findById(id);
     }
 
     @Override

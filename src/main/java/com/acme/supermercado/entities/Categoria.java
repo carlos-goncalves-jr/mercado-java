@@ -24,7 +24,7 @@ public class Categoria {
     @JsonIgnore
     private List<Produto> produtos;
 
-    Categoria(String nome) {
+    public Categoria(String nome) {
         this.nome = nome;
     }
 
