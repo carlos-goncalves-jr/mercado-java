@@ -1,5 +1,6 @@
 package com.acme.supermercado.entities;
 
+import com.acme.supermercado.entities.dtos.ProdutoDTO;
 import com.acme.supermercado.entities.enums.UnidadeDeMedida;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
@@ -24,5 +25,15 @@ public class Produto {
     @ManyToOne
     @JoinColumn(name = "categoria_id", nullable = false)
     private Categoria categoria;
+    @NotNull
+    private Integer valor;
+
+    public Produto(ProdutoDTO produtoDTO) {
+        this.id = produtoDTO.getId();
+        this.nome = produtoDTO.getNome();
+        this.unidadeDeMedida = produtoDTO.getUnidadeDeMedida();
+        this.categoria = produtoDTO.getCategoria();
+        this.valor = produtoDTO.getValor();
+    }
 
 }
