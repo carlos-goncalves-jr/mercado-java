@@ -1,7 +1,8 @@
 package com.acme.supermercado.services;
 
+import com.acme.supermercado.dtos.ProdutoDTO;
 import com.acme.supermercado.entities.Carrinho;
-import com.acme.supermercado.entities.ProdutoCarrinho;
+import com.acme.supermercado.entities.Produto;
 import com.acme.supermercado.exceptions.IdNotFoundException;
 import com.acme.supermercado.repositories.CarrinhoRepository;
 import com.acme.supermercado.services.interfaces.CarrinhoInterface;
@@ -19,17 +20,18 @@ public class CarrinhoServiceImpl implements CarrinhoInterface {
     ProdutoInterface produtoService;
 
     @Override
-    public Carrinho adicionarProduto(Long id, ProdutoCarrinho produtoCarrinho) {
+    public Carrinho adicionarProduto(Long id, ProdutoDTO produtoDTO) {
         Carrinho carrinho = findById(id);
-        produtoService.findById(produtoCarrinho.getId_produto());
-        carrinho.getListaDeProdutos().add(produtoCarrinho);
+        Produto produto = produtoService.findById(produtoDTO.idProduto());
+        carrinho.getListaDeProdutos().add(produto);
         return carrinhoRepository.save(carrinho);
     }
 
     @Override
-    public void removerProduto(Long id, ProdutoCarrinho produtoCarrinho) {
+    public void removerProduto(Long id, ProdutoDTO produtoDTO) {
         Carrinho carrinho = findById(id);
-        carrinho.getListaDeProdutos().remove(produtoCarrinho);
+        Produto produto = produtoService.findById(produtoDTO.idProduto());
+        carrinho.getListaDeProdutos().remove(produto);
         carrinhoRepository.save(carrinho);
     }
 

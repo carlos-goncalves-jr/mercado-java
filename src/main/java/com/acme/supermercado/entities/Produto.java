@@ -17,22 +17,18 @@ public class Produto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     @NotNull
     private String nome;
+
     @Enumerated(EnumType.STRING)
     private UnidadeDeMedida unidadeDeMedida;
+
     @ManyToOne
     @JoinColumn(name = "categoria_id", nullable = false)
     private Categoria categoria;
+
     @NotNull
     private Integer valor;
-
-    public Produto(ProdutoCarrinho produtoCarrinho) {
-        this.id = produtoCarrinho.getId_produto();
-        this.nome = produtoCarrinho.getNome();
-        this.unidadeDeMedida = produtoCarrinho.getUnidadeDeMedida();
-        this.categoria = produtoCarrinho.getCategoria();
-        this.valor = produtoCarrinho.getValor();
-    }
 
 }

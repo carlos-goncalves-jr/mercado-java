@@ -20,5 +20,5 @@ public class Carrinho {
     private Long id;
 
     @OneToMany
-    private List<ProdutoCarrinho> listaDeProdutos;
+    private List<Produto> listaDeProdutos;
 }
