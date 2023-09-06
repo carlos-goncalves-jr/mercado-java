@@ -1,6 +1,6 @@
 package com.acme.supermercado.controllers;
 
-import com.acme.supermercado.dtos.PedidoDTO;
+import com.acme.supermercado.dtos.CarrinhoDTO;
 import com.acme.supermercado.entities.Carrinho;
 import com.acme.supermercado.services.interfaces.CarrinhoInterface;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,13 +21,13 @@ public class CarrinhoController {
     }
 
     @PostMapping("/{id}")
-    public ResponseEntity<Carrinho> adicionarProduto(@PathVariable Long id, @RequestBody PedidoDTO pedidoDTO) {
-        return new ResponseEntity<Carrinho>(carrinhoService.adicionarProduto(id, pedidoDTO), HttpStatus.CREATED);
+    public ResponseEntity<Carrinho> adicionarProduto(@PathVariable Long id, @RequestBody CarrinhoDTO carrinhoDTO) {
+        return new ResponseEntity<Carrinho>(carrinhoService.adicionarProduto(id, carrinhoDTO), HttpStatus.CREATED);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<HttpStatus> removerProduto(@PathVariable Long id, @RequestBody PedidoDTO pedidoDTO) {
-        carrinhoService.removerProduto(id, pedidoDTO);
+    public ResponseEntity<HttpStatus> removerProduto(@PathVariable Long id, @RequestBody CarrinhoDTO carrinhoDTO) {
+        carrinhoService.removerProduto(id, carrinhoDTO);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
