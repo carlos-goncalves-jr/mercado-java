@@ -1,5 +1,6 @@
 package com.acme.supermercado.entities;
 
+import com.acme.supermercado.dtos.ProdutoDTO;
 import com.acme.supermercado.entities.enums.UnidadeDeMedida;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
@@ -31,4 +32,11 @@ public class Produto {
     @NotNull
     private Integer valor;
 
+    public Produto(ProdutoDTO produtoDto, Categoria categoria) {
+        this.nome = produtoDto.nome();
+        this.valor = produtoDto.valor();
+        this.unidadeDeMedida = produtoDto.unidadeDeMedida();
+        this.valor = produtoDto.valor();
+        this.categoria = categoria;
+    }
 }

@@ -1,5 +1,6 @@
 package com.acme.supermercado.controllers;
 
+import com.acme.supermercado.dtos.ProdutoDTO;
 import com.acme.supermercado.entities.Produto;
 import com.acme.supermercado.services.interfaces.ProdutoInterface;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -51,8 +52,8 @@ public class ProdutoController {
             @ApiResponse(responseCode = "409", description = "Produto ja cadastrado")
     })
     @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Produto> createProduto(@RequestBody Produto produto) {
-        return new ResponseEntity<Produto>(produtoService.createProduto(produto), HttpStatus.CREATED);
+    public ResponseEntity<Produto> createProduto(@RequestBody ProdutoDTO produtoDTO) {
+        return new ResponseEntity<Produto>(produtoService.createProduto(produtoDTO), HttpStatus.CREATED);
     }
 
     @ApiResponses( value = {
@@ -60,8 +61,8 @@ public class ProdutoController {
             @ApiResponse(responseCode = "409", description = "Produto ja cadastrado")
     })
     @PutMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Produto> updateProduto(@PathVariable Long id, @RequestBody Produto produto) {
-        return ResponseEntity.ok(produtoService.updateProduto(id, produto));
+    public ResponseEntity<Produto> updateProduto(@PathVariable Long id, @RequestBody ProdutoDTO produtoDTO) {
+        return ResponseEntity.ok(produtoService.updateProduto(id, produtoDTO));
     }
 
     @ApiResponses( value = {

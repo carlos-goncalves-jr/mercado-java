@@ -1,4 +1,6 @@
 package com.acme.supermercado.dtos;
 
-public record ProdutoDTO(Long idProduto, Integer quantidade) {
+import com.acme.supermercado.entities.enums.UnidadeDeMedida;
+
+public record ProdutoDTO(String nome, UnidadeDeMedida unidadeDeMedida, Long idCategoria, Integer valor) {
 }
