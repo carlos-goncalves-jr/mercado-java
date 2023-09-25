@@ -23,7 +23,7 @@ public class CarrinhoServiceImpl implements CarrinhoInterface {
     public Carrinho adicionarProduto(Long id, CarrinhoDTO carrinhoDTO) {
         Carrinho carrinho = findById(id);
         Produto produto = produtoService.findById(carrinhoDTO.idProduto());
-        carrinho.getListaDeProdutos().add(produto);
+        carrinho.getMapDeProdutos().put(produto.getNome(), carrinhoDTO.quantidade());
         return carrinhoRepository.save(carrinho);
     }
 
@@ -31,7 +31,7 @@ public class CarrinhoServiceImpl implements CarrinhoInterface {
     public void removerProduto(Long id, CarrinhoDTO carrinhoDTO) {
         Carrinho carrinho = findById(id);
         Produto produto = produtoService.findById(carrinhoDTO.idProduto());
-        carrinho.getListaDeProdutos().remove(produto);
+        carrinho.getMapDeProdutos().remove(produto);
         carrinhoRepository.save(carrinho);
     }
 

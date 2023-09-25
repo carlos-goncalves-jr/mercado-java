@@ -5,7 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
+import java.util.Map;
 
 
 @Data
@@ -19,6 +19,10 @@ public class Carrinho {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToMany
-    private List<Produto> listaDeProdutos;
+    @ElementCollection
+    @CollectionTable(name = "tbl_produto_quantidade", joinColumns = @JoinColumn(name = "carrinho_id"))
+    @MapKeyColumn(name = "nome")
+    @Column(name = "quantidade_produto")
+    private Map<String, Integer> mapDeProdutos;
+
 }
