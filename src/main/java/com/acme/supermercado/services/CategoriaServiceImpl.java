@@ -15,7 +15,11 @@ import java.util.List;
 public class CategoriaServiceImpl implements CategoriaInterface {
 
     @Autowired
-    CategoriaRepository categoriaRepository;
+    private final CategoriaRepository categoriaRepository;
+
+    public CategoriaServiceImpl(CategoriaRepository categoriaRepository) {
+        this.categoriaRepository = categoriaRepository;
+    }
 
     @Override
     public Categoria findById(Long id) {

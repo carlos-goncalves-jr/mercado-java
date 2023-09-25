@@ -14,10 +14,16 @@ import org.springframework.stereotype.Service;
 public class CarrinhoServiceImpl implements CarrinhoInterface {
 
     @Autowired
-    CarrinhoRepository carrinhoRepository;
+    private final CarrinhoRepository carrinhoRepository;
 
     @Autowired
-    ProdutoInterface produtoService;
+    private final ProdutoInterface produtoService;
+
+    @Autowired
+    public CarrinhoServiceImpl(CarrinhoRepository carrinhoRepository, ProdutoInterface produtoService) {
+        this.carrinhoRepository = carrinhoRepository;
+        this.produtoService = produtoService;
+    }
 
     @Override
     public Carrinho adicionarProduto(Long id, CarrinhoDTO carrinhoDTO) {
@@ -31,7 +37,7 @@ public class CarrinhoServiceImpl implements CarrinhoInterface {
     public void removerProduto(Long id, CarrinhoDTO carrinhoDTO) {
         Carrinho carrinho = findById(id);
         Produto produto = produtoService.findById(carrinhoDTO.idProduto());
-        carrinho.getMapDeProdutos().remove(produto);
+        carrinho.getMapDeProdutos().remove(produto.getNome());
         carrinhoRepository.save(carrinho);
     }
 
